@@ -1,6 +1,13 @@
 <template>
     <div class="palavra">
-
+        <div class="palavra-letras">
+            <div class="palavra-letra" v-for="(letra, key) in palavra" :key="key">
+                {{ verificaLetra(letra) || etapa === 'enforcado' ? letra : '' }}
+            </div>
+        </div>
+        <div class="palavra-dica">
+            {{ dica }}
+        </div>
     </div>
 </template>
 <script>
@@ -8,7 +15,9 @@ export default {
     name: 'Palavra',
     props: {
         palavra: String,
-        dica: String
+        dica: String,
+        verificaLetra: Function,
+        etapa: String
     }
 }
 </script>
